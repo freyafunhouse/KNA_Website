@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #C9A237;
+  --color-gold-light: #E8C84A;
+  --color-gold-dark: #A07C1E;
+  --color-midnight: #0D1117;
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0D1117;
+  color: #f1f5f9;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Section fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+.animate-slideDown {
+  animation: slideDown 0.25s ease-out both;
+}
+
+/* Staggered delays for hero content */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #C9A237 0%, #E8C84A 50%, #C9A237 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Parallax image section */
+.parallax-section {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Block printing of the CV modal (and entire page when modal is open) */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    visibility: hidden;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0D1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A237;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8C84A;
+}
