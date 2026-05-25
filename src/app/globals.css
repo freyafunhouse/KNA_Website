@@ -1,13 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #C9A237;
-  --color-gold-light: #E8C84A;
-  --color-gold-dark: #A07C1E;
-  --color-midnight: #0D1117;
+  /* KNA Gold palette */
+  --color-gold-200: #F7E09A;
+  --color-gold-300: #F0CC6A;
+  --color-gold-400: #E0B030;
+  --color-gold-500: #C8921A;
+  --color-gold-600: #A87515;
+  --color-gold-700: #8A6010;
 
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  /* KNA Navy palette */
+  --color-navy-950: #06080F;
+  --color-navy-900: #0B0F1A;
+  --color-navy-800: #111827;
+  --color-navy-700: #1A2236;
+  --color-navy-600: #243050;
+  --color-navy-500: #2E3D65;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
+}
+
+:root {
+  --background: #0B0F1A;
+  --foreground: #F9FAFB;
 }
 
 html {
@@ -15,95 +32,111 @@ html {
 }
 
 body {
-  background-color: #0D1117;
-  color: #f1f5f9;
+  background-color: #0B0F1A;
+  color: #F9FAFB;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Section fade-in animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeInUp {
-  animation: fadeInUp 0.7s ease-out both;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease-out both;
-}
-
-.animate-slideDown {
-  animation: slideDown 0.25s ease-out both;
-}
-
-/* Staggered delays for hero content */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-500 { animation-delay: 0.5s; }
-.delay-700 { animation-delay: 0.7s; }
-
-/* Gold gradient text */
-.text-gold-gradient {
-  background: linear-gradient(135deg, #C9A237 0%, #E8C84A 50%, #C9A237 100%);
+/* Gold gradient text utility */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F0CC6A 0%, #C8921A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Parallax image section */
-.parallax-section {
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+/* Gold shimmer border */
+.border-gold-glow {
+  border-color: rgba(200, 146, 26, 0.4);
+  box-shadow: 0 0 20px rgba(200, 146, 26, 0.1);
 }
 
-/* Block printing of the CV modal (and entire page when modal is open) */
-@media print {
-  .no-print {
-    display: none !important;
+/* Smooth underline for nav links */
+.nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #C8921A;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hero "Explore" chevron: subtle bounce (lighter than Tailwind's animate-bounce) */
+@keyframes hero-explore-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  body {
-    visibility: hidden;
+  50% {
+    transform: translateY(5px);
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+.anim-hero-explore-bounce {
+  animation: hero-explore-bounce 2s ease-in-out infinite;
+  will-change: transform;
 }
-::-webkit-scrollbar-track {
-  background: #0D1117;
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-hero-explore-bounce {
+    animation: none;
+  }
 }
-::-webkit-scrollbar-thumb {
-  background: #C9A237;
-  border-radius: 3px;
+
+/* Industry network Australia map — gold coastline glow on hover */
+.industry-network-map-coast {
+  fill: none;
+  stroke: rgba(200, 146, 26, 0.72);
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.45s ease;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #E8C84A;
+
+.industry-network-map-outline {
+  transition:
+    filter 0.45s ease,
+    transform 0.45s ease;
+}
+
+.industry-network-map-clipped {
+  transition: transform 0.45s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .industry-network-map-shell:hover .industry-network-map-outline,
+  .industry-network-map-shell:focus-within .industry-network-map-outline {
+    filter:
+      drop-shadow(0 0 8px rgba(200, 146, 26, 0.55))
+      drop-shadow(0 0 20px rgba(200, 146, 26, 0.3));
+    transform: translateZ(0) scale(1.008);
+  }
+
+  .industry-network-map-shell:hover .industry-network-map-clipped,
+  .industry-network-map-shell:focus-within .industry-network-map-clipped {
+    transform: scale(1.008);
+  }
+
+  .industry-network-map-shell:hover .industry-network-map-coast,
+  .industry-network-map-shell:focus-within .industry-network-map-coast {
+    stroke: rgba(232, 184, 74, 0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-network-map-outline,
+  .industry-network-map-clipped,
+  .industry-network-map-coast {
+    transition: none;
+  }
+
+  .industry-network-map-shell:hover .industry-network-map-outline,
+  .industry-network-map-shell:focus-within .industry-network-map-outline,
+  .industry-network-map-shell:hover .industry-network-map-clipped,
+  .industry-network-map-shell:focus-within .industry-network-map-clipped {
+    transform: none;
+  }
 }

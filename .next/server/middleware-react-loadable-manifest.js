@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components/CVButton.tsx -> @/components/CVModal\":{\"id\":\"components/CVButton.tsx -> @/components/CVModal\",\"files\":[\"static/chunks/_app-pages-browser_src_components_CVModal_tsx.js\"]}}"
