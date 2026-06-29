@@ -191,12 +191,6 @@ export default function Header() {
               <Phone className="w-4 h-4" />
               <span>+61 467 817 535</span>
             </a>
-            <Link
-              href="/contact"
-              className="bg-gold-500 hover:bg-gold-400 text-black font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors"
-            >
-              Hire Us
-            </Link>
           </div>
 
           <button
@@ -268,12 +262,6 @@ export default function Header() {
                 <Phone className="w-4 h-4" />
                 +61 467 817 535
               </a>
-              <Link
-                href="/contact"
-                className="bg-gold-500 hover:bg-gold-400 text-black font-semibold text-sm px-5 py-3 rounded-lg transition-colors text-center"
-              >
-                Hire Us
-              </Link>
             </div>
           </div>
         </div>
