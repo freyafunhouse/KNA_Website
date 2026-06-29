@@ -3,7 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { KNA_EMAIL_COMPANY, KNA_EMAIL_KRIS } from "@/lib/contact";
+import { KNA_EMAIL_COMPANY } from "@/lib/contact";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,7 +33,7 @@ const jsonLd = {
   description:
     "Professional maintenance consulting, SAP PM optimisation, shutdown planning, labour hire and critical parts procurement for Australia's mining and industrial sector.",
   telephone: "+61467817535",
-  email: [KNA_EMAIL_COMPANY, KNA_EMAIL_KRIS],
+  email: KNA_EMAIL_COMPANY,
   address: {
     "@type": "PostalAddress",
     streetAddress: "151 Lake Road",
