@@ -33,7 +33,7 @@ export default function GalleryPreview({ items }: GalleryPreviewProps) {
 
         {latestImages.length === 0 ? (
           <p className="text-gray-400 text-center py-8">
-            Photos will appear here when added to the gallery folder.
+            Photos will appear here when added to the gallery.
           </p>
         ) : (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
